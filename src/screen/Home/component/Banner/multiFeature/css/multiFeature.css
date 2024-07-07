@@ -1,0 +1,43 @@
+/* Banner.css */
+.multi-feature-banner {
+    display: flex;
+    gap: 20px;
+    margin: 20px;
+  }
+  
+  .multi-feature-banner-card {
+    background-color: #fff;
+    border: 0px solid #ddd;
+    padding: 20px;
+    flex: 1;
+    text-align: center;
+    /* box-shadow: 2px; */
+  }
+  
+  .multi-feature-card-content {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+  }
+  
+  .card-content img {
+    width: 23%;
+    height: auto;
+  }
+  
+  .multi-feature-card-content {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .image-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Two columns */
+    grid-gap: 10px; /* Adjust the gap between images */
+  }
+  
+  .image-grid img {
+    width: 100%; /* Ensure images fill their grid cells */
+    height: auto;
+  }
+  
