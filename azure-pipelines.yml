@@ -4,14 +4,14 @@ trigger:
       - main
 
 pool:
-  vmImage: 'ubuntu-latest'
+  vmImage: 'windows-latest'
 
 variables:
   # Define variables
   buildConfiguration: 'Release'
   azureServiceConnection: 'reactjsConnection'
-  appName: 'Dev-reacApp123'
-  resourceGroupName: 'dev-reactApp123'
+  appName: 'reactjswebApp'
+  resourceGroupName: 'webapp1'
 
 steps:
   - task: NodeTool@0
