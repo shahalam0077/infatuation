@@ -23,8 +23,8 @@ jobs:
 
       - name: Verify installed dependencies
         run: |
-          $package = npm ls @mui/base
-          if ($package -eq "") {
+          $package = npm ls @mui/base --json | ConvertFrom-Json
+          if (!$package) {
             npm install @mui/base@latest
           }
 
