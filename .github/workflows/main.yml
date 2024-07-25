@@ -21,8 +21,11 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Install missing dependencies with yarn
-        run: yarn add @mui/base/Input
+      - name: Verify installed dependencies
+        run: npm ls @mui/base
+
+      - name: Install specific missing dependency (if needed)
+        run: npm install @mui/base@latest
 
       - name: Build React app
         run: npm run build
