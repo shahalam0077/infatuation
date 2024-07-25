@@ -22,10 +22,10 @@ jobs:
         run: npm install
 
       - name: Verify installed dependencies
-        run: npm ls @mui/base
-
-      - name: Install specific missing dependency (if needed)
-        run: npm install @mui/base@latest
+        run: |
+          if ! npm ls @mui/base; then
+            npm install @mui/base@latest
+          fi
 
       - name: Build React app
         run: npm run build
