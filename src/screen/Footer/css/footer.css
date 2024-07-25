@@ -1,0 +1,35 @@
+.footer-dialog {
+  font-size: 18px;
+  font-weight: 70;
+  margin: 0 0 2.8em 0;
+  bottom: 0;
+  position: absolute;
+}
+.footer-dnk-logo{
+  width: 14vmin;
+  height: 4vmin;
+}
+.secondary-footer {
+  display: flex;
+  text-align: left;
+  flex-direction: row;
+  justify-content: space-between;
+  border-top: 1px solid #ddd;
+  padding:7rem
+}
+
+.footer-title {
+    font-size: 22px;
+    font-weight: 500;
+    text-align: left;
+    padding-bottom: 15px;
+}
+.section-text{
+    font-weight: 500;
+}
+
+.base-Input-input{
+    padding: 10px;
+width: 65%;
+margin-bottom: 20px;
+}

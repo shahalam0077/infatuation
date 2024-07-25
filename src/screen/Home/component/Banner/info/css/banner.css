@@ -1,0 +1,34 @@
+.info-banner {
+    background-color: #f9f9f9;
+    padding: 40px 20px;
+  }
+  .info-banner-list {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+  .info-item {
+    text-align: center;
+    max-width: 200px;
+  }
+  
+  .info-item i {
+    font-size: 2rem;
+    margin-bottom: 10px;
+  }
+  
+  .info-item h3 {
+    font-size: 1.25rem;
+    margin-bottom: 10px;
+  }
+  
+  .info-item p {
+    color: #777;
+  }
+
+  .info-image {
+    width: 50px; /* Adjust the width as needed */
+    height: auto;
+    margin-bottom: 10px;
+  }
+  

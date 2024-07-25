@@ -1,0 +1,33 @@
+/* Banner.css */
+.banner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 2rem;
+    background-color: #f0f0f0
+  }
+  
+  .banner-logo {
+    width: 100px;
+  }
+  
+  .banner-nav {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .banner-nav li {
+    display: inline-block;
+    margin-right: 1rem;
+  }
+  
+  .banner-sale {
+    text-align: center;
+    padding-bottom: 2rem ;
+  }
+  
+  .banner-sale h2 {
+    margin-bottom: 1rem;
+  }
+  

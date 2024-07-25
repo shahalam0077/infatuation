@@ -1,0 +1,33 @@
+.store{
+    display: flex;
+    flex-direction: row;
+    padding: 5rem;
+background-color: #f5f7f9;
+}
+.store-left{
+    width: 19%;
+    margin-right: 3rem;
+    background-color: #f5f7f9;
+}
+.store-search-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.store-search-arrow-icon{
+    background-color: #0084D6;
+    padding: 0.5rem;
+    border-radius: 5px;
+}
+
+.store-right{
+    width: 75%;
+    background-color: #fff;
+}
+.cat-item{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-block: 10px;
+}

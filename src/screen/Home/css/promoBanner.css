@@ -1,0 +1,60 @@
+.promo-banner {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  width: 100%;
+  height: 100vh; /* Ensure it covers the full viewport height */
+  overflow: auto;
+  align-content: center;
+}
+
+.content {
+  /* padding: 20px; */
+  background-color: rgba(
+    255,
+    255,
+    255,
+    0
+  ); /* Optional: to make content background semi-transparent */
+  /* height: 2000px;  Just to demonstrate scrolling */
+}
+
+.promo-banner-heading {
+  margin-left: 7rem;
+  color: aliceblue;
+  font-size: 66px;
+  font-size: 4.125rem;
+  font-family: "Lato", sans-serif;
+  padding-top: .5em;
+}
+.promo-banner-subheading {
+  margin-left: 7rem;
+  color: aliceblue;
+  font-size: 66px;
+  font-size: 4.125rem;
+  font-family: "Lato", sans-serif;
+  padding-top: .5em;
+}
+
+.promo-banner-description {
+  margin-left: 7rem;
+  color: aliceblue;
+  font-size: 22px;
+  font-size: 2rem;
+  font-family: "Lato", sans-serif;
+  padding-top: .6em;
+  padding-bottom: .2em;
+}
+
+.promo-banner-promoText {
+  margin-left: 7rem;
+  color: aliceblue;
+  padding-bottom: .2em;
+}
+.shop-now {
+  margin-left: 7rem;
+}
+.button-con {
+  margin-left: 7rem;
+}
