@@ -1,8 +1,7 @@
 /* src/styles.css */
 body {
   margin: 0;
-  font-family: Arial, sans-serif;
-
+  font-family: 'Roboto', sans-serif;
   background-color: #E5E7E9 ;
 }
 
@@ -69,6 +68,9 @@ body {
 }
 
 .content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   /* padding: 2rem; */
   text-align: justify;
 }

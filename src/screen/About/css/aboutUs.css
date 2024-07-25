@@ -1,0 +1,97 @@
+.about-us-body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f7f7f7;
+  }
+  
+  .about-us-container {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    padding: 20px;
+  }
+  
+  .about-us-main {
+    flex: 3;
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 20px;
+  }
+  
+  .about-us-hero {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .about-us-hero h1 {
+    font-size: 2.5em;
+    margin: 0;
+  }
+  
+  .about-us-hero p {
+    font-size: 1.2em;
+    color: #555555;
+  }
+  
+  .hero-image {
+    width: 100%;
+    border-radius: 8px;
+    margin-top: 20px;
+  }
+  
+  .about-us-content h2 {
+    font-size: 1.8em;
+    color: #333333;
+    margin-top: 20px;
+  }
+  
+  .about-us-content p {
+    font-size: 1em;
+    color: #333333;
+    margin: 10px 0;
+  }
+  
+  .about-us-sidebar {
+    flex: 1;
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 20px;
+  }
+  
+  .about-us-sidebar h2 {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+  }
+  
+  .sidebar-item {
+    display: flex;
+    margin-bottom: 20px;
+  }
+  
+  .sidebar-item img {
+    width: 30%;
+    height: auto;
+    border-radius: 8px;
+    margin-right: 10px;
+  }
+  
+  .sidebar-item-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  .sidebar-item-content p {
+    font-size: 1em;
+    color: #333333;
+    margin: 0;
+  }
+  
+  .sidebar-item-content span {
+    color: #0073e6;
+    cursor: pointer;
+    text-decoration: underline;
+    font-size: 0.9em;
+  }
+  

@@ -1,0 +1,62 @@
+.scroll-product-banner {
+    margin: 20px;
+    background-color: #fff;
+  }
+  
+  .scroll-product-banner h2 {
+    margin-bottom: 10px;
+    padding: 10px;
+  }
+  
+  .scroll-product-card-content {
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding: 10px;
+  }
+  
+  .scroll-product-image-grid {
+    display: flex;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    max-width: 100%;
+    white-space: nowrap;
+  }
+  
+  .scroll-product-image-grid img {
+    width: 150px;
+    height: 150px;
+    object-fit: contain;
+    margin-right: 10px;
+    border-radius: 8px;
+  }
+  
+  .scroll-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(255, 255, 255, 0.9);
+    border: none;
+    border-radius: 5%;
+    width: 50px;
+    height: 100px;
+    cursor: pointer;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .scroll-button.left {
+    left: 0px;
+  }
+  
+  .scroll-button.right {
+    right: 0px;
+  }
+  
+  .scroll-button:hover {
+    background-color: rgba(255, 255, 255, 1);
+  }
+  

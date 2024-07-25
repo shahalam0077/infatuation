@@ -13,6 +13,7 @@ import DropDown from "./dropDown";
 import { CartDrawer } from "./cartDrawer";
 import SearchBar from "./searchBar";
 import CustomizedMenus from "../../Common/component/menu";
+import ProfileMenu from "../../Common/component/profileMenu";
 
 const Header = () => {
   return (
@@ -44,7 +45,7 @@ const Header = () => {
       <div className="headerRight">
         {/* <Search /> */}
         <SearchBar/>
-        <Link className="text medium" to="/about">
+        <Link className="text medium" to="/aboutUs">
           ABOUT
         </Link>
         <Link className="text medium" to="/contact">
@@ -52,7 +53,8 @@ const Header = () => {
         </Link>
         <CartDrawer/>
         {/* <Link className="text medium" to="/cart"><ShoppingCartIcon fontSize="medium" /><div className="cart-count" >0</div></Link>  */}
-       <Link className="text medium" to="/myAccount"><PersonIcon fontSize="medium" /></Link> 
+       {/* <Link className="text medium" to="/myAccount"><PersonIcon fontSize="medium" /></Link>  */}
+       <ProfileMenu/>
       </div>
 
     </header>

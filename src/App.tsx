@@ -12,6 +12,11 @@ import ContactUs from './screen/Contact/component/contactUs';
 import MyAccount from './screen/MyAccount/component/myAccount';
 import Store from './screen/Store/component/store';
 import './css/styles.css';
+import LoginPage from './screen/Login/component/otpLogin';
+import MyProfile from './screen/MyAccount/component/myAccount';
+import MyOrder from './screen/Order/component/MyOrder';
+import AboutUs from './screen/About/component/about';
+import ProductPage from './screen/SingleProduct/component/singleProduct';
 
 function App() {
   const [drawerOpen, setDrawerOpen] = useState(false);
@@ -30,13 +35,17 @@ function App() {
           <Route path="/product/:id" element={<ProductDetail />} />
           <Route path="/cart" element={<Cart toggleDrawer={toggleDrawer} />} />
           <Route path="/checkout" element={<Checkout />} />
-          <Route path="/about" element={<About />} />
+          <Route path="/aboutUs" element={<AboutUs />} />
           <Route path="/contact" element={<ContactUs />} />
-          <Route path="/myAccount" element={<MyAccount />} />
+          <Route path="/my-profile" element={<MyProfile />} />
           <Route path="/store" element={<Store />} />
+          <Route path="/otp-login" element={<LoginPage />} />
+          <Route path="/my-order" element={<MyOrder />} />
+          <Route path="/product-page" element={<ProductPage />} />
         </Routes>
+        <Footer />
       </div>
-      <Footer />
+      
     </Router>
   );
 }

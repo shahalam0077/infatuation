@@ -19,6 +19,8 @@ import SpeedDialTooltipOpen from "../../Common/component/floatingActionButton";
 import Gallery  from "./aliceCarouselBanner";
 import VideoBanner from "./Banner/video/component/videoBanner";
 import MultiFeatureBanner from "./Banner/multiFeature/component/multiFeatureBanner";
+import ScrollProductBanner from "./Banner/scrollProduct/component/scrollProductBanner";
+import MobileBanner from "./Banner/mobile/component/mobileBanner";
 
 const cardData = [
   {
@@ -145,7 +147,9 @@ const Home = () => {
           buttonText="Explore Now"
           link="/new-collection"
         />
+        <ScrollProductBanner/>
         <VideoBanner/>
+        <MobileBanner/>
         <InfoBanner />
         <SaleBanner />
         <SecondaryFooter />

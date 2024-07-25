@@ -40,9 +40,11 @@
 
   .card-container {
     display: flex;
+    background-color: #fff;
     justify-content: center;
     gap: 20px;
     margin-top: 20px;
+    padding-block: 20px;
   }
 
   .fab-icon {
@@ -52,7 +54,13 @@
     z-index: 1000; /* Ensures the FAB floats above other content */
   }
 
+  .carousel {
+    width: 100%;
+    background-color: #fff;
+  }
+
   .carousel-container {
+    
     padding-left: 50px;
     position: relative;
     display: flex;

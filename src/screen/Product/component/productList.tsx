@@ -130,9 +130,22 @@ const ProductList = ({ showTitle }: { showTitle: boolean }) => {
 
   return (
     <div className="product-list">
-      {showTitle && <div className="product-list-title">Featured Products</div>}
-      <Divider sx={{ width: '50%', borderColor: 'primary.main', borderWidth: 2 ,marginX:'25%',marginTop:2 }} />
-      <div className="product-container">
+      {showTitle && (
+        <div className="product-list-title">
+          Featured Products
+          <Divider
+            sx={{
+              width: "50%",
+              borderColor: "primary.main",
+              borderWidth: 2,
+              marginX: "25%",
+              marginTop: 2,
+            }}
+          />
+        </div>
+      )}
+<div className="product-list-container">
+      <Link color="black" className="product-container" to={"/product-page"}>
         {loading ? (
           <div>Loading...</div>
         ) : (
@@ -149,7 +162,7 @@ const ProductList = ({ showTitle }: { showTitle: boolean }) => {
             />
           ))
         )}
-      </div>
+      </Link>
       <div className="pagination-container">
         <Pagination
           sx={{
@@ -168,6 +181,7 @@ const ProductList = ({ showTitle }: { showTitle: boolean }) => {
             />
           )}
         />
+      </div>
       </div>
     </div>
   );
