@@ -21,14 +21,19 @@ jobs:
       - name: Install dependencies
         run: npm install
 
+      - name: Install jq
+        run: sudo apt-get install -y jq
+
       - name: Verify installed dependencies
         run: |
-          $output = npm ls @mui/base --json
-          $package = ConvertFrom-Json $output
-          if (-not $package.dependencies.'@mui/base') {
+          # Check if @mui/base is installed
+          if ! npm ls @mui/base --json | jq '.dependencies["@mui/base"]' >/dev/null 2>&1; then
+            echo "@mui/base is not installed. Installing..."
             npm install @mui/base@latest
-          }
-        shell: pwsh
+          else
+            echo "@mui/base is already installed."
+          fi
+        shell: bash
 
       - name: Build React app
         run: npm run build
