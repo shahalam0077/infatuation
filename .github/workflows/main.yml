@@ -21,6 +21,14 @@ jobs:
       - name: Install dependencies
         run: npm install
 
+      - name: Verify installed dependencies
+        run: |
+          $output = Invoke-Expression "npm ls @mui/base --json"
+          $package = $output | ConvertFrom-Json
+          if (!$package.dependencies.'@mui/base') {
+            npm install @mui/base@latest
+          }
+
       - name: Build React app
         run: npm run build
         env:
@@ -41,7 +49,7 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: build
-          path: ./build
+          path: ./build-artifacts
 
       - name: Login to Azure
         uses: azure/login@v1
@@ -50,7 +58,7 @@ jobs:
 
       - name: Deploy to Azure Web App
         run: |
-          az webapp deploy --resource-group 'webapp1' --name ${{ secrets.AZURE_WEBAPP_NAME }} --src-path ./build
+          az webapp deploy --resource-group 'webapp1' --name ${{ secrets.AZURE_WEBAPP_NAME }} --src-path ./build-artifacts
         env:
           AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
           AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
