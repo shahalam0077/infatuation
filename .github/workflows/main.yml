@@ -74,7 +74,7 @@ jobs:
 
       - name: Deploy to Azure Web App
         run: |
-          az webapp deploy --resource-group 'webapp1' --name ${{ secrets.AZURE_WEBAPP_NAME }} --src-path ./build-artifacts --type static
+          az webapp deploy --resource-group 'webapp1' --name ${{ secrets.AZURE_WEBAPP_NAME }} --src-path ./ --type static
         env:
           AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
           AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
