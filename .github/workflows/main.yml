@@ -48,7 +48,7 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: build
-          path: ./build-artifacts
+          path: ./build-artifacts/build
 
       - name: Debug artifact path
         run: |
@@ -67,7 +67,7 @@ jobs:
             }
       - name: Deploy to Azure Web App
         run: |
-          az webapp deploy --resource-group 'webapp1' --name ${{ secrets.AZURE_WEBAPP_NAME }} --src-path ./build-artifacts --type static
+          az webapp deploy --resource-group 'webapp1' --name ${{ secrets.AZURE_WEBAPP_NAME }} --src-path ./build-artifacts/build --type static
         working-directory: ./build-artifacts
         env:
           AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
