@@ -63,8 +63,9 @@ jobs:
             }
       - name: Deploy to Azure Web App
         run: |
-          $cwd = pwd
-          az webapp deploy --resource-group 'webapp1' --name ${{ secrets.AZURE_WEBAPP_NAME }} --src-path $cwd/build-artifacts
+          $cwd = Convert-Path (Join-Path $PWD 'build-artifacts')
+          az webapp deploy --resource-group 'webapp1' --name ${{ secrets.AZURE_WEBAPP_NAME }} --src-path $cwd
+        shell: pwsh
         env:
           AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
           AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
