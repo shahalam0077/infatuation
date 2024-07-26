@@ -65,6 +65,13 @@ jobs:
               "tenantId": "${{ secrets.AZURE_TENANT_ID }}",
               "subscriptionId": "${{ secrets.AZURE_SUBSCRIPTION_ID }}"
             }
+      - name: Debug build-artifacts directory
+        run: |
+          echo "Current working directory: $PWD"
+          echo "Contents of build-artifacts directory:"
+          ls ./build-artifacts
+          echo "Contents of build-artifacts/build directory:"
+          ls ./build-artifacts/build
       - name: Deploy to Azure Web App
         run: |
           az webapp deploy --resource-group 'webapp1' --name 'reactjswebApp' --src-path ./build-artifacts/build --type static
