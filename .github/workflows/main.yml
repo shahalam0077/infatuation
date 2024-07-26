@@ -23,8 +23,9 @@ jobs:
 
       - name: Verify installed dependencies
         run: |
-          $package = npm ls @mui/base --json | ConvertFrom-Json
-          if (!$package) {
+          $output = Invoke-Expression "npm ls @mui/base --json"
+          $package = $output | ConvertFrom-Json
+          if (!$package.dependencies.'@mui/base') {
             npm install @mui/base@latest
           }
 
