@@ -65,17 +65,23 @@ jobs:
               "tenantId": "${{ secrets.AZURE_TENANT_ID }}",
               "subscriptionId": "${{ secrets.AZURE_SUBSCRIPTION_ID }}"
             }
-      - name: Debug build-artifacts directory
+      - name: Check permissions
         run: |
-          echo "Current working directory: $PWD"
-          echo "Contents of build-artifacts directory:"
-          ls ./build-artifacts
-          echo "Contents of build-artifacts/build directory:"
-          ls ./build-artifacts/build
+          $pwd = pwd
+          $srcPath = "$pwd/build-artifacts/build"
+          Get-Acl $srcPath | Format-List
+        shell: pwsh
+        env:
+          AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
+          AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
+          AZURE_CLIENT_SECRET: ${{ secrets.AZURE_CLIENT_SECRET }}
+          AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+
       - name: Deploy to Azure Web App
         run: |
-          az webapp deploy --resource-group 'webapp1' --name 'reactjswebApp' --src-path ./build-artifacts/build --type static
-        working-directory: ./build-artifacts
+          $pwd = pwd
+          $srcPath = "$pwd/build-artifacts/build"
+          az webapp deploy --resource-group 'webapp1' --name 'eactjswebApp' --src-path $srcPath --type static
         env:
           AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
           AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
