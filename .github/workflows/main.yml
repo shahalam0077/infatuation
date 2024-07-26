@@ -26,14 +26,12 @@ jobs:
 
       - name: Verify installed dependencies
         run: |
-          # Check if @mui/base is installed
           if ! npm ls @mui/base --json | jq '.dependencies["@mui/base"]' >/dev/null 2>&1; then
             echo "@mui/base is not installed. Installing..."
             npm install @mui/base@latest
           else
             echo "@mui/base is already installed."
           fi
-        shell: bash
 
       - name: Build React app
         run: npm run build
