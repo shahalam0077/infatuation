@@ -7,7 +7,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
 
     steps:
       - name: Checkout repository
@@ -21,18 +21,13 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Install jq
-        run: sudo apt-get install -y jq
-
       - name: Verify installed dependencies
         run: |
-          if ! npm ls @mui/base --json | jq '.dependencies["@mui/base"]' >/dev/null 2>&1; then
-            echo "@mui/base is not installed. Installing..."
+          $output = Invoke-Expression "npm ls @mui/base --json"
+          $package = $output | ConvertFrom-Json
+          if (!$package.dependencies.'@mui/base') {
             npm install @mui/base@latest
-          else
-            echo "@mui/base is already installed."
-          fi
-
+          }
       - name: Build React app
         run: npm run build
         env:
@@ -45,7 +40,7 @@ jobs:
           path: build/
 
   deploy:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     needs: build
 
     steps:
@@ -57,10 +52,9 @@ jobs:
 
       - name: Debug artifact path
         run: |
-          echo "Current working directory: $(pwd)"
+          echo "Current working directory: $PWD"
           echo "Contents of build-artifacts directory:"
-          ls -la ./build-artifacts
-
+          ls ./build-artifacts
       - name: Login to Azure
         uses: azure/login@v1
         with:
@@ -71,10 +65,10 @@ jobs:
               "tenantId": "${{ secrets.AZURE_TENANT_ID }}",
               "subscriptionId": "${{ secrets.AZURE_SUBSCRIPTION_ID }}"
             }
-
       - name: Deploy to Azure Web App
         run: |
-          az webapp deploy --resource-group 'webapp1' --name ${{ secrets.AZURE_WEBAPP_NAME }} --src-path ./ --type static
+          az webapp deploy --resource-group 'webapp1' --name ${{ secrets.AZURE_WEBAPP_NAME }} --src-path ./build-artifacts --type static
+        working-directory: ./build-artifacts
         env:
           AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
           AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
