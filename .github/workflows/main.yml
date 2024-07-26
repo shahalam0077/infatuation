@@ -51,6 +51,12 @@ jobs:
           name: build
           path: ./build-artifacts
 
+      - name: Debug artifact path
+        run: |
+          echo "Current working directory: $PWD"
+          echo "Contents of build-artifacts directory:"
+          ls ./build-artifacts
+
       - name: Login to Azure
         uses: azure/login@v1
         with:
@@ -64,7 +70,8 @@ jobs:
       - name: Deploy to Azure Web App
         run: |
           $cwd = Convert-Path (Join-Path $PWD 'build-artifacts')
-          az webapp deploy --resource-group 'webapp1' --name ${{ secrets.AZURE_WEBAPP_NAME }} --src-path $cwd
+          echo "Deploying from path: $cwd"
+          az webapp deploy --resource-group 'webapp1' --name ${{ secrets.AZURE_WEBAPP_NAME }} --src-path $cwd --type static
         shell: pwsh
         env:
           AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
