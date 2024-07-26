@@ -23,11 +23,12 @@ jobs:
 
       - name: Verify installed dependencies
         run: |
-          $output = Invoke-Expression "npm ls @mui/base --json"
-          $package = $output | ConvertFrom-Json
-          if (!$package.dependencies.'@mui/base') {
+          $output = npm ls @mui/base --json
+          $package = ConvertFrom-Json $output
+          if (-not $package.dependencies.'@mui/base') {
             npm install @mui/base@latest
           }
+        shell: pwsh
 
       - name: Build React app
         run: npm run build
@@ -67,6 +68,7 @@ jobs:
               "tenantId": "${{ secrets.AZURE_TENANT_ID }}",
               "subscriptionId": "${{ secrets.AZURE_SUBSCRIPTION_ID }}"
             }
+
       - name: Deploy to Azure Web App
         run: |
           az webapp deploy --resource-group 'webapp1' --name ${{ secrets.AZURE_WEBAPP_NAME }} --src-path ./build-artifacts --type static
