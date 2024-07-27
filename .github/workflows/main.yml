@@ -55,8 +55,6 @@ jobs:
           echo "Current working directory: $PWD"
           echo "Contents of build-artifacts directory:"
           ls ./build-artifacts
-          echo "Contents of build directory:"
-          ls ./build-artifacts/build
 
       - name: Login to Azure
         uses: azure/login@v1
@@ -69,22 +67,10 @@ jobs:
               "subscriptionId": "${{ secrets.AZURE_SUBSCRIPTION_ID }}"
             }
 
-      - name: Check permissions
-        run: |
-          $pwd = pwd
-          $srcPath = "$pwd/build-artifacts/build"
-          Get-Acl $srcPath | Format-List
-        shell: pwsh
-        env:
-          AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
-          AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
-          AZURE_CLIENT_SECRET: ${{ secrets.AZURE_CLIENT_SECRET }}
-          AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
-
       - name: Deploy to Azure Web App
         run: |
           $pwd = pwd
-          $srcPath = "$pwd/build-artifacts/build"
+          $srcPath = "$pwd/build-artifacts"
           az webapp deploy --resource-group 'webapp1' --name 'reactjswebApp' --src-path $srcPath --type static
         env:
           AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
