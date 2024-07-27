@@ -69,7 +69,8 @@ jobs:
 
       - name: Deploy to Azure Web App
         run: |
-          az webapp up --resource-group 'webapp1' --name 'reactjswebApp' --location 'North Europe' --src-path './build-artifacts'
+          cd build-artifacts
+          az webapp up --resource-group 'webapp1' --name 'reactjswebApp' --location 'North Europe'
         shell: pwsh
         env:
           AZURE_CLIENT_ID: ${{ vars.AZURE_CLIENT_ID }}
