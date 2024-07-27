@@ -48,13 +48,16 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: build
-          path: ./build-artifacts/build
+          path: ./build-artifacts
 
       - name: Debug artifact path
         run: |
           echo "Current working directory: $PWD"
           echo "Contents of build-artifacts directory:"
           ls ./build-artifacts
+          echo "Contents of build directory:"
+          ls ./build-artifacts/build
+
       - name: Login to Azure
         uses: azure/login@v1
         with:
@@ -65,6 +68,7 @@ jobs:
               "tenantId": "${{ secrets.AZURE_TENANT_ID }}",
               "subscriptionId": "${{ secrets.AZURE_SUBSCRIPTION_ID }}"
             }
+
       - name: Check permissions
         run: |
           $pwd = pwd
@@ -81,7 +85,7 @@ jobs:
         run: |
           $pwd = pwd
           $srcPath = "$pwd/build-artifacts/build"
-          az webapp deploy --resource-group 'webapp1' --name 'eactjswebApp' --src-path $srcPath --type static
+          az webapp deploy --resource-group 'webapp1' --name 'reactjswebApp' --src-path $srcPath --type static
         env:
           AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
           AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
