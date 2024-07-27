@@ -61,19 +61,32 @@ jobs:
         with:
           creds: >
             {
-              "clientId": "${{ secrets.AZURE_CLIENT_ID }}",
+              "clientId": "${{ vars.AZURE_CLIENT_ID }}",
               "clientSecret": "${{ secrets.AZURE_CLIENT_SECRET }}",
-              "tenantId": "${{ secrets.AZURE_TENANT_ID }}",
-              "subscriptionId": "${{ secrets.AZURE_SUBSCRIPTION_ID }}"
+              "tenantId": "${{ vars.AZURE_TENANT_ID }}",
+              "subscriptionId": "${{ vars.AZURE_SUBSCRIPTION_ID }}"
             }
+
+      - name: Check permissions
+        run: |
+          $pwd = Resolve-Path -Path .
+          $srcPath = "$pwd/build-artifacts"
+          Get-Acl $srcPath | Format-List
+        shell: pwsh
+        env:
+          AZURE_CLIENT_ID: ${{ vars.AZURE_CLIENT_ID }}
+          AZURE_TENANT_ID: ${{ vars.AZURE_TENANT_ID }}
+          AZURE_CLIENT_SECRET: ${{ secrets.AZURE_CLIENT_SECRET }}
+          AZURE_SUBSCRIPTION_ID: ${{ vars.AZURE_SUBSCRIPTION_ID }}
 
       - name: Deploy to Azure Web App
         run: |
-          $pwd = pwd
+          $pwd = Resolve-Path -Path .
           $srcPath = "$pwd/build-artifacts"
           az webapp deploy --resource-group 'webapp1' --name 'reactjswebApp' --src-path $srcPath --type static
+        shell: pwsh
         env:
-          AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
-          AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
+          AZURE_CLIENT_ID: ${{ vars.AZURE_CLIENT_ID }}
+          AZURE_TENANT_ID: ${{ vars.AZURE_TENANT_ID }}
           AZURE_CLIENT_SECRET: ${{ secrets.AZURE_CLIENT_SECRET }}
-          AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+          AZURE_SUBSCRIPTION_ID: ${{ vars.AZURE_SUBSCRIPTION_ID }}
